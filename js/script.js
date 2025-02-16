@@ -17,3 +17,21 @@ document.addEventListener('DOMContentLoaded', () => {
         changingIcons.style.animationPlayState = "running"; // Start the animation
     }, 3100); // Increased delay to ensure the cursor effect is fully settled
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    const navbarHeight = document.querySelector("header").offsetHeight;
+
+    document.querySelectorAll(".navbar a").forEach(anchor => {
+        anchor.addEventListener("click", function(e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute("href").substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            window.scrollTo({
+                top: targetElement.offsetTop - navbarHeight,
+                behavior: "smooth"
+            });
+        });
+    });
+});

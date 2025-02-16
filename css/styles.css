@@ -6,6 +6,11 @@ body {
     color: #00FF00; /* Bright green text color */
 }
 
+/* Enable smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
 header {
     background-color: #009900; /* Darker Monitor Green */
     color: #F0FFF0; /* Whitish Green */
@@ -200,9 +205,11 @@ main {
     padding: 20px;
 }
 
+/* Add padding to the top of the section to account for the fixed header */
 section {
     margin-bottom: 40px;
     padding: 20px;
+    padding-top: 70px; /* Adjust this value to bring the heading up */
     background-color: #000; /* Black background for sections */
     color: #00FF00; /* Bright green text color */
     border-radius: 10px;
@@ -222,12 +229,35 @@ footer {
     bottom: 0;
 }
 
+/* Center the heading and subtitle */
+#photography {
+    text-align: center;
+}
+
+#photography h2 {
+    font-size: 2em;
+    color: #00FF00; /* Neon green color */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7), /* Shadow for raised effect */
+                 0 0 10px rgba(0, 255, 0, 0.7); /* Glowing effect */
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1.2em;
+    color: #FFD700; /* Yellow color */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Subtle shadow effect */
+    margin-bottom: 20px;
+}
+
 /* Photo Grid */
 .photo-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(3, 1fr); /* Create a 3x3 grid */
+    gap: 20px; /* Increase the gap between images */
     padding: 20px;
+    background: linear-gradient(135deg, #1a1a1a 25%, #333 100%);
+    border: 2px solid #00FF00;
+    border-radius: 15px;
 }
 
 .photo-item {
@@ -235,16 +265,69 @@ footer {
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    display: flex;
+    flex-direction: column; /* Stack image and info vertically */
+    align-items: center;
+    justify-content: flex-start; /* Align items to the start */
+    height: 350px; /* Adjust the height to make the grid smaller */
+    border: 2px solid #00FF00;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.7);
 }
 
 .photo-item img {
     width: 100%;
-    height: auto;
+    height: 70%; /* Adjust height to leave space for info */
+    object-fit: cover;
     transition: transform 0.3s ease;
+    filter: contrast(1.2) brightness(1.1);
+    border-bottom: 2px solid #00FF00; /* Separate image from info */
+}
+
+.photo-item:hover {
+    border-color: #FF00FF;
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.7);
 }
 
 .photo-item:hover img {
     transform: scale(1.1);
+    filter: contrast(1.5) brightness(1.2);
+}
+
+.photo-info {
+    width: 100%;
+    padding: 10px;
+    background-color: #000; /* Black background for info */
+    color: #00FF00; /* Bright green text color */
+    text-align: center;
+    flex-grow: 1; /* Allow the info section to grow */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Space out the elements */
+}
+
+.caption {
+    margin: 0;
+    font-size: 1em;
+}
+
+.hashtags {
+    margin: 5px 0;
+    font-size: 0.9em;
+    color: #FFD700; /* Yellow color for hashtags */
+}
+
+.likes, .comments, .shares {
+    margin: 0;
+    font-size: 0.9em;
+    color: #FF00FF; /* Pink color for likes, comments, and shares */
+}
+
+.photo-stats {
+    display: flex;
+    justify-content: space-around; /* Space out the items evenly */
+    width: 100%;
+    margin-top: 10px;
+    padding: 0 10px; /* Add padding to ensure proper spacing */
 }
 
 /* Media Queries for larger screens */
