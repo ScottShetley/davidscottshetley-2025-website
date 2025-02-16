@@ -147,6 +147,7 @@ header::after {
     border-radius: 5px;
 }
 
+/* Hero Section */
 .hero {
     position: relative;
     width: 100%;
@@ -165,6 +166,193 @@ header::after {
     display: block;
     filter: brightness(1) contrast(1.2); /* Adjust brightness and contrast */
     border-radius: 25px; /* Match the border radius of the hero section */
+    transition: filter 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.circle {
+    position: absolute;
+    top: 30%; /* Position the circle over your head */
+    left: 75%; /* Position the circle over your head */
+    width: 150px;
+    height: 150px;
+    border: 4px solid #00FF00; /* Neon green circle */
+    background-color: rgba(0, 255, 0, 0.2); /* Semi-transparent green background for visibility */
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0); /* Start with scale 0 */
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease; /* Faster transition for hover effect */
+}
+
+.flicker-text {
+    position: absolute;
+    top: 100px; /* Position the text in the top left corner */
+    left: 300px; /* Position the text in the top left corner */
+    font-family: 'Roboto Mono', monospace; /* Terminal font */
+    color: #00FF00; /* Neon green color */
+    text-shadow: 1px 1px 2px #000; /* Slight black shadow */
+    font-size: 1.2em; /* Adjust font size as needed */
+    animation: flicker 1.5s infinite alternate; /* Flicker animation */
+}
+
+@keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        opacity: 1;
+    }
+    20%, 24%, 55% {
+        opacity: 0.5;
+    }
+}
+
+.circle .line {
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: #00FF00; /* Neon green lines */
+    transition: width 0.2s ease; /* Faster transition for lines */
+}
+
+.circle .line1 {
+    top: 25%;
+    left: 100%;
+    transform: translateY(-50%);
+}
+
+.circle .line2 {
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+}
+
+.circle .line3 {
+    top: 75%;
+    left: 100%;
+    transform: translateY(-50%);
+}
+
+.circle .line4 {
+    top: 25%;
+    right: 100%;
+    transform: translateY(-50%);
+}
+
+.circle .line5 {
+    top: 50%;
+    right: 100%;
+    transform: translateY(-50%);
+}
+
+.circle .line6 {
+    top: 75%;
+    right: 100%;
+    transform: translateY(-50%);
+}
+
+.circle.grown .line {
+    width: 50px; /* Length of the lines */
+}
+
+.circle .text-box {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    color: #00FF00; /* Bright green text color */
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-family: 'Roboto Mono', monospace; /* Terminal font */
+    text-shadow: 1px 1px 2px #000; /* Slight black shadow */
+    opacity: 0;
+    transition: opacity 0.2s ease; /* Faster transition for hover effect */
+    min-width: 150px; /* Minimum width to fit the text */
+    white-space: nowrap; /* Prevent text from wrapping */
+}
+
+.circle.grown .line1 .text-box,
+.circle.grown .line2 .text-box,
+.circle.grown .line3 .text-box,
+.circle.grown .line4 .text-box,
+.circle.grown .line5 .text-box,
+.circle.grown .line6 .text-box {
+    opacity: 1; /* Show the text boxes when the circle is grown */
+}
+
+.circle .line1 .text-box {
+    left: 50px; /* Position the text box at the end of the line */
+}
+
+.circle .line2 .text-box {
+    left: 50px; /* Position the text box at the end of the line */
+}
+
+.circle .line3 .text-box {
+    left: 50px; /* Position the text box at the end of the line */
+}
+
+.circle .line4 .text-box {
+    right: 50px; /* Position the text box at the end of the line */
+}
+
+.circle .line5 .text-box {
+    right: 50px; /* Position the text box at the end of the line */
+}
+
+.circle .line6 .text-box {
+    right: 50px; /* Position the text box at the end of the line */
+}
+
+.hero img:active + .circle {
+    opacity: 0; /* Hide the circle on click */
+}
+
+.hero:hover .circle {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1); /* Scale up the circle */
+}
+
+.hero:hover .circle.grown .line {
+    width: 50px; /* Length of the lines */
+}
+
+/* Trigger Area */
+.trigger-area {
+    position: absolute;
+    top: 30%; /* Position the trigger area over your head */
+    left: 75%; /* Position the trigger area over your head */
+    width: 150px;
+    height: 150px;
+    background-color: transparent; /* Make the background transparent */
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none; /* Ensure the trigger area does not interfere with mouse events */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.trigger-text {
+    font-family: 'Roboto Mono', monospace; /* Terminal font */
+    color: #00FF00; /* Green color */
+    text-shadow: 1px 1px 2px #000; /* Slight black shadow */
+    font-size: 1.2em; /* Adjust font size as needed */
+    pointer-events: none; /* Ensure the text does not interfere with mouse events */
+}
+
+.hud {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    color: #00FF00; /* Bright green text color */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.hero:hover .hud {
+    opacity: 1; /* Show the HUD on hover */
 }
 
 .hero::before {
@@ -194,6 +382,64 @@ header::after {
     animation: flicker 0.05s infinite; /* Stronger flicker effect */
     border-radius: 25px; /* Match the border radius of the hero section */
     box-sizing: border-box; /* Ensure the border radius is applied correctly */
+}
+
+.lines {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    opacity: 0;
+    animation: lines-animation 1s ease-out forwards;
+}
+
+.line {
+    width: 100%;
+    height: 2px;
+    background-color: #00FF00; /* Neon green lines */
+}
+
+.info {
+    opacity: 0;
+    animation: info-animation 1s ease-out forwards;
+}
+
+.hero:hover .circle,
+.hero:hover .lines,
+.hero:hover .info {
+    opacity: 1;
+}
+
+@keyframes circle-animation {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes lines-animation {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes info-animation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 @keyframes flicker {

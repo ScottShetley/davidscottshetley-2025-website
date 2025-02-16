@@ -35,3 +35,23 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const heroImage = document.getElementById('hero-image');
+    const circle = document.querySelector('.circle');
+
+    let circleVisible = false;
+
+    heroImage.addEventListener('click', function() {
+        if (circleVisible) {
+            circle.classList.remove('grown');
+            circle.style.opacity = '0';
+            circle.style.transform = 'translate(-50%, -50%) scale(0)';
+        } else {
+            circle.classList.add('grown');
+            circle.style.opacity = '1';
+            circle.style.transform = 'translate(-50%, -50%) scale(1)';
+        }
+        circleVisible = !circleVisible;
+    });
+});
