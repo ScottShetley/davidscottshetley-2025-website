@@ -3,7 +3,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #000; /* Black background for the entire page */
-    color: #333;
+    color: #00FF00; /* Bright green text color */
 }
 
 header {
@@ -20,7 +20,6 @@ header {
     border-radius: 25px; /* Rounded corners for CRT effect */
     box-sizing: border-box; /* Include border in the element's total width and height */
     overflow: hidden; /* Ensure pseudo-elements are contained */
-    position: relative; /* Ensure the header is the containing block for absolute positioning */
 }
 
 header h1 {
@@ -221,6 +220,31 @@ footer {
     position: fixed;
     width: 100%;
     bottom: 0;
+}
+
+/* Photo Grid */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    padding: 20px;
+}
+
+.photo-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+.photo-item img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.photo-item:hover img {
+    transform: scale(1.1);
 }
 
 /* Media Queries for larger screens */

@@ -15,5 +15,5 @@ document.addEventListener('DOMContentLoaded', () => {
         const changingIcons = document.querySelector(".changing-icons");
         changingIcons.style.visibility = "visible"; // Make the icons visible
         changingIcons.style.animationPlayState = "running"; // Start the animation
-    }, 3400); // Increased delay to ensure the cursor effect is fully settled
+    }, 3100); // Increased delay to ensure the cursor effect is fully settled
 });
