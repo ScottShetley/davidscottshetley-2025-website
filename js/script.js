@@ -36,22 +36,22 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    const heroImage = document.getElementById('hero-image');
-    const circle = document.querySelector('.circle');
+function openModal() {
+    console.log("openModal function called");
+    const modal = document.getElementById("contactModal");
+    modal.style.display = "block";
+    modal.style.animation = "dropDown 0.5s ease-out forwards";
+}
 
-    let circleVisible = false;
+function closeModal() {
+    console.log("closeModal function called");
+    document.getElementById("contactModal").style.display = "none";
+}
 
-    heroImage.addEventListener('click', function() {
-        if (circleVisible) {
-            circle.classList.remove('grown');
-            circle.style.opacity = '0';
-            circle.style.transform = 'translate(-50%, -50%) scale(0)';
-        } else {
-            circle.classList.add('grown');
-            circle.style.opacity = '1';
-            circle.style.transform = 'translate(-50%, -50%) scale(1)';
-        }
-        circleVisible = !circleVisible;
-    });
-});
+// Close the modal when clicking outside of it
+window.onclick = function(event) {
+    var modal = document.getElementById("contactModal");
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}

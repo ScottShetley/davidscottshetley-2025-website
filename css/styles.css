@@ -25,6 +25,8 @@ header {
     border-radius: 25px; /* Rounded corners for CRT effect */
     box-sizing: border-box; /* Include border in the element's total width and height */
     overflow: hidden; /* Ensure pseudo-elements are contained */
+    /* background-image: url('path/to/grunge-texture.png'); Remove grunge texture */
+    /* background-blend-mode: multiply; Remove blend mode */
 }
 
 header h1 {
@@ -33,11 +35,13 @@ header h1 {
     white-space: nowrap; /* Prevent text from wrapping */
     overflow: hidden; /* Hide the overflowing text */
     border-right: 0.15em solid #F0FFF0; /* Cursor effect */
-    animation: typing 3.5s steps(30, end), blink-caret 0.75s step-end infinite; /* Typing and cursor blink effect */
+    animation: typing 3.5s steps(30, end), blink-caret 0.75s step-end infinite, glitch 4s infinite; /* Typing, cursor blink, and glitch effect */
     width: auto; /* Adjust width to fit the text exactly */
     display: inline-block; /* Ensure the width fits the text content */
     box-sizing: content-box; /* Ensure padding is not included in the width */
     position: relative;
+    font-family: 'Orbitron', sans-serif; /* Keep the existing font */
+    text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000; /* Distressed effect */
 }
 
 .first-letter {
@@ -67,6 +71,25 @@ header h1 {
     100% { background-image: url('../images/web-design.png'); } /* Design icon */
 }
 
+@keyframes glitch {
+    0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 100% {
+        text-shadow: 2px 2px #ff0000, -2px -2px #00ff00;
+        transform: translate(0, 0);
+    }
+    5%, 15%, 25%, 35%, 45%, 55%, 65%, 75%, 85%, 95% {
+        text-shadow: -2px -2px #ff0000, 2px 2px #00ff00;
+        transform: translate(-2px, 2px);
+    }
+    12%, 22%, 32%, 42%, 52%, 62%, 72%, 82%, 92% {
+        text-shadow: 2px -2px #ff0000, -2px 2px #00ff00;
+        transform: translate(2px, -2px);
+    }
+    18%, 28%, 38%, 48%, 58%, 68%, 78%, 88%, 98% {
+        text-shadow: -2px 2px #ff0000, 2px -2px #00ff00;
+        transform: translate(-2px, -2px);
+    }
+}
+
 header h1::after {
     content: none; /* Remove the ::after pseudo-element */
 }
@@ -82,6 +105,7 @@ header::before {
     pointer-events: none;
     border-radius: 25px; /* Match the border radius of the header */
     box-sizing: border-box; /* Ensure the border radius is applied correctly */
+    opacity: 0.5; /* Adjust opacity for subtle effect */
 }
 
 header::after {
@@ -169,6 +193,92 @@ header::after {
     transition: filter 0.3s ease; /* Smooth transition for hover effect */
 }
 
+.hero .overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #F0FFF0; /* Whitish Green */
+    font-family: 'Orbitron', sans-serif;
+    text-shadow: 1px 1px 2px #000; /* Slight shadow for better readability */
+}
+
+.hero .overlay h1 {
+    font-size: 3em;
+    margin: 0;
+}
+
+.hero .overlay p {
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+
+.hero .overlay .cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #006600; /* Dark Green */
+    color: #F0FFF0; /* Whitish Green */
+    text-decoration: none;
+    font-size: 1.2em;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.hero .overlay .cta-button:hover {
+    background-color: #004400; /* Darker Green on Hover */
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)); /* Gradient overlay */
+    pointer-events: none;
+    border-radius: 25px; /* Match the border radius of the hero section */
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.2) 50%, transparent 50%);
+    background-size: 100% 4px; /* Fewer scan lines */
+    pointer-events: none;
+    opacity: 0.5;
+    animation: flicker 0.05s infinite; /* Stronger flicker effect */
+    border-radius: 25px; /* Match the border radius of the hero section */
+    box-sizing: border-box; /* Ensure the border radius is applied correctly */
+}
+
+.hero .circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    border: 2px solid #00FF00; /* Bright green border */
+    border-radius: 50%; /* Make it a circle */
+    transform: translate(-50%, -50%);
+    animation: rotate 10s linear infinite; /* Rotate the circle */
+}
+
+@keyframes rotate {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
 .circle {
     position: absolute;
     top: 30%; /* Position the circle over your head */
@@ -188,18 +298,41 @@ header::after {
     top: 100px; /* Position the text in the top left corner */
     left: 300px; /* Position the text in the top left corner */
     font-family: 'Roboto Mono', monospace; /* Terminal font */
-    color: #00FF00; /* Neon green color */
-    text-shadow: 1px 1px 2px #000; /* Slight black shadow */
+    color: #00FF00; /* Initial neon green color */
+    text-shadow: 1px 1px 2px #000, 0 0 10px #00FF00, 0 0 20px #00FF00, 0 0 30px #00FF00, 0 0 40px #00FF00, 0 0 50px #00FF00, 0 0 60px #00FF00; /* Neon glow effect */
     font-size: 1.2em; /* Adjust font size as needed */
-    animation: flicker 1.5s infinite alternate; /* Flicker animation */
+    animation: flicker .5s infinite alternate, color-change 8s infinite; /* Combined animations */
 }
 
 @keyframes flicker {
-    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-        opacity: 1;
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.6; }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
     }
-    20%, 24%, 55% {
-        opacity: 0.5;
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes color-change {
+    0% {
+        color: #025402; /* Neon green */
+    }
+    25% {
+        color: #0f3823; /* Red */
+    }
+    50% {
+        color: #326432; /* Darker neon green */
+    }
+    75% {
+        color: #555542; /* Yellow */
+    }
+    100% {
+        color: #458b45; /* Neon green */
     }
 }
 
@@ -355,35 +488,6 @@ header::after {
     opacity: 1; /* Show the HUD on hover */
 }
 
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 255, 0, 0.1); /* Green overlay */
-    pointer-events: none;
-    border-radius: 25px; /* Match the border radius of the hero section */
-    box-sizing: border-box; /* Ensure the border radius is applied correctly */
-}
-
-.hero::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(rgba(0, 0, 0, 0.2) 50%, transparent 50%);
-    background-size: 100% 4px; /* Fewer scan lines */
-    pointer-events: none;
-    opacity: 0.5;
-    animation: flicker 0.05s infinite; /* Stronger flicker effect */
-    border-radius: 25px; /* Match the border radius of the hero section */
-    box-sizing: border-box; /* Ensure the border radius is applied correctly */
-}
-
 .lines {
     position: absolute;
     top: 50%;
@@ -442,9 +546,41 @@ header::after {
     }
 }
 
-@keyframes flicker {
-    0%, 100% { opacity: 0.4; }
-    50% { opacity: 0.6; }
+.hero .overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #F0FFF0; /* Whitish Green */
+    font-family: 'Orbitron', sans-serif;
+    text-shadow: 1px 1px 2px #000; /* Slight shadow for better readability */
+}
+
+.hero .overlay h1 {
+    font-size: 3em;
+    margin: 0;
+}
+
+.hero .overlay p {
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+
+.hero .overlay .cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #006600; /* Dark Green */
+    color: #F0FFF0; /* Whitish Green */
+    text-decoration: none;
+    font-size: 1.2em;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.hero .overlay .cta-button:hover {
+    background-color: #004400; /* Darker Green on Hover */
 }
 
 main {
@@ -599,4 +735,51 @@ footer {
     section {
         margin-bottom: 60px;
     }
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: absolute; /* Position relative to the hero section */
+    top: 0; /* Position it at the top */
+    left:20%; /* Center horizontally */
+    transform: translate(-50%, -100%); /* Center horizontally and start above the viewport */
+    z-index: 1001; /* Sit on top */
+    width: 20%; /* Adjust width to be narrower */
+    height: 35%; /* Adjust height to be taller */
+    background-color: rgba(51, 51, 51, 0.9); /* Match the hero section background with some transparency */
+    border: 20px solid #333; /* Match the hero section border */
+    border-radius: 25px; /* Match the hero section border radius */
+    color: #F0FFF0; /* Whitish Green */
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    animation: dropDown 0.5s ease-out forwards; /* Drop-down animation */
+}
+
+@keyframes dropDown {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -100%); /* Start above the viewport */
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0); /* End at the final position */
+    }
+}
+
+
+
+.close {
+    color: #F0FFF0; /* Whitish Green */
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #00FF00; /* Bright green */
+    text-decoration: none;
+    cursor: pointer;
 }

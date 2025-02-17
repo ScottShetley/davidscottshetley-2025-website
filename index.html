@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>David Scott Shetley - NeonPhotoGram</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto+Mono:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;">
 </head>
 <body id="home">
@@ -24,17 +24,22 @@
     </header>
     <main>
         <div class="hero">
-            <img src="images/Hero me-2.jpg" alt="Hero Image" id="hero-image">
-            <div class="circle">
-                <div class="line line1"><div class="text-box">Birthday: August 2nd, 1974</div></div>
-                <div class="line line2"><div class="text-box">I am 6'5" tall</div></div>
-                <div class="line line3"><div class="text-box">.5% of the population is taller</div></div>
-                <div class="line line4"><div class="text-box">I am a veteran</div></div>
-                <div class="line line5"><div class="text-box">I love art, photography and design</div></div>
-                <div class="line line6"><div class="text-box">Information redacted</div></div>
+            <img src="images/Hero me-2.jpg" alt="Hero Image">
+            <div class="overlay">
+                <h1>Welcome to My Website</h1>
+                <p>"Capturing Moments, Crafting Code, Creating Art".</p>
+                <a href="#contact" class="cta-button" onclick="openModal()">Contact Me</a>
             </div>
-            <div class="trigger-area"></div>
-            <div class="flicker-text">Click On Me</div> <!-- New flickering text -->
+            <!-- Contact Info Modal -->
+            <div id="contactModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <h2>Contact Information</h2>
+                    <p>Email: davidscottshetley@gmail.com</p>
+                    <p>Phone: (620) 674-1470</p>
+                    <p>Address: 3425 Flint Rd, Columbus GA</p>
+                </div>
+            </div>
         </div>
         <section id="resume">
             <h2>Resume</h2>
