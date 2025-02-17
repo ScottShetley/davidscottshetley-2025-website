@@ -18,7 +18,7 @@ header {
     text-align: left; /* Align text to the left */
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 1000; /* Ensure header is on top */
     width: 96%; /* Full width */
     margin: 0 auto; /* Center the header */
     border: 20px solid #333; /* Grey border to match the hero section */
@@ -144,6 +144,7 @@ header::after {
 .navbar {
     background-color: #006600; /* Even Darker Green for Navbar */
     padding: 10px 0;
+    z-index: 1000; /* Ensure navbar is on top */
 }
 
 .navbar ul {
@@ -743,7 +744,7 @@ footer {
     top: 0; /* Position it at the top */
     left:20%; /* Center horizontally */
     transform: translate(-50%, -100%); /* Center horizontally and start above the viewport */
-    z-index: 1001; /* Sit on top */
+    z-index: 999; /* Ensure modal is behind the header and navbar */
     width: 20%; /* Adjust width to be narrower */
     height: 35%; /* Adjust height to be taller */
     background-color: rgba(51, 51, 51, 0.9); /* Match the hero section background with some transparency */
