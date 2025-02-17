@@ -19,7 +19,7 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    width: 100%; /* Full width */
+    width: 96%; /* Full width */
     margin: 0 auto; /* Center the header */
     border: 20px solid #333; /* Grey border to match the hero section */
     border-radius: 25px; /* Rounded corners for CRT effect */
