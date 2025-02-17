@@ -55,3 +55,8 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+
+function toggleMenu() {
+    const navbarUl = document.querySelector('.navbar ul');
+    navbarUl.classList.toggle('active');
+}

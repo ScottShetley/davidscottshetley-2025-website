@@ -6,6 +6,20 @@ body {
     color: #00FF00; /* Bright green text color */
 }
 
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: #FFA500;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 /* Enable smooth scrolling */
 html {
     scroll-behavior: smooth;
@@ -13,20 +27,6 @@ html {
 
 header {
     background-color: #009900; /* Darker Monitor Green */
-    color: #F0FFF0; /* Whitish Green */
-    padding: 20px;
-    text-align: left; /* Align text to the left */
-    position: sticky;
-    top: 0;
-    z-index: 1000; /* Ensure header is on top */
-    width: 96%; /* Full width */
-    margin: 0 auto; /* Center the header */
-    border: 20px solid #333; /* Grey border to match the hero section */
-    border-radius: 25px; /* Rounded corners for CRT effect */
-    box-sizing: border-box; /* Include border in the element's total width and height */
-    overflow: hidden; /* Ensure pseudo-elements are contained */
-    /* background-image: url('path/to/grunge-texture.png'); Remove grunge texture */
-    /* background-blend-mode: multiply; Remove blend mode */
 }
 
 header h1 {
@@ -127,7 +127,7 @@ header::after {
 .changing-icons {
     position: absolute;
     top: 32.5%; /* Center vertically */
-    right: calc(83.3em); /* Position the icons to the right of the cursor */
+    right: calc(79em); /* Position the icons to the right of the cursor */
     transform: translateY(-50%); /* Center vertically */
     width: 3em; /* Adjust width to fit the icons */
     height: 3em; /* Adjust height to fit the icons */
@@ -145,6 +145,9 @@ header::after {
     background-color: #006600; /* Even Darker Green for Navbar */
     padding: 10px 0;
     z-index: 1000; /* Ensure navbar is on top */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .navbar ul {
@@ -156,7 +159,7 @@ header::after {
 }
 
 .navbar ul li {
-    margin: 0 15px;
+    margin: 0 10px;
 }
 
 .navbar ul li a {
@@ -170,6 +173,25 @@ header::after {
 .navbar ul li a:hover {
     background-color: #004400; /* Darker Green on Hover */
     border-radius: 5px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #00FF00; /* Bright green text color */
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: #00FF00; /* Bright green color */
+    margin: 4px 0;
+    transition: 0.4s;
 }
 
 /* Hero Section */
@@ -769,8 +791,6 @@ footer {
     }
 }
 
-
-
 .close {
     color: #F0FFF0; /* Whitish Green */
     float: right;
@@ -783,4 +803,109 @@ footer {
     color: #00FF00; /* Bright green */
     text-decoration: none;
     cursor: pointer;
+}
+
+/* Resume Section */
+#resume {
+    position: relative;
+    padding: 20px;
+    background-color: #000; /* Black background inside the border */
+    color: #00FF00; /* Bright green text color */
+    border-radius: 20px; /* Slightly curved corners for all sides */
+    margin-top: 40px; /* Add margin to the top to separate from the hero section */
+    margin-bottom: 40px;
+    overflow: visible; /* Allow content to overflow */
+    border-left: 20px solid #333; /* Grey border for left side */
+    border-right: 20px solid #333; /* Grey border for right side */
+    border-top: 60px solid #333; /* 3x thicker top border */
+    border-bottom: 60px solid #333; /* 3x thicker bottom border */
+    width: 80%; /* Set width to 80% of the container */
+    min-height: 160vh; /* Set minimum height to 160% of the viewport height */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    margin-left: auto; /* Center horizontally */
+    margin-right: auto; /* Center horizontally */
+}
+
+#resume-content {
+    border-radius: 15px; /* Smaller rounded inside corners */
+    overflow: hidden; /* Ensure content is contained within the border */
+    width: 100%; /* Full width */
+    height: auto; /* Auto height */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    padding: 20px; /* Add padding to ensure content is not hidden behind the border */
+    background-color: #000; /* Black background for the content */
+    color: #00FF00; /* Bright green text color */
+    position: relative; /* Position relative within the parent */
+}
+
+/* Resume Section Links */
+#resume-content a {
+    color: #FFA500; /* Orange-yellow color */
+    text-decoration: none; /* Remove underline */
+}
+
+#resume-content a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Highlighted Text */
+.highlight {
+    color: #FF99FF; /* Lighter pink color */
+    font-weight: bold; /* Make the text bold */
+}
+
+/* Download Buttons */
+.download-buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.download-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #00FF00; /* Green background color */
+    color: #FF0000; /* Red text color */
+    text-decoration: none;
+    font-size: 1em;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    animation: flicker 1.5s infinite; /* Flickering effect */
+}
+
+.download-button:hover {
+    background-color: #FFA500; /* Orange background color on hover */
+    color: #000; /* Stable black text color on hover */
+    animation: none; /* Stop flickering on hover */
+}
+
+/* Flickering effect */
+@keyframes flicker {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Hide the navigation links on smaller screens */
+@media (max-width: 768px) {
+    .navbar ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: #000; /* Black background */
+    }
+
+    .navbar ul.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: flex;
+    }
 }
